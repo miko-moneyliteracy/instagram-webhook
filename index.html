@@ -115,10 +115,10 @@
 
     <script>
     // アクセストークンをここに設定
-    const accessToken = 'YOUR_ACCESS_TOKEN';
+    const accessToken = WEBHOOK_TOKEN;
     
     // Webhook通知を受け取るエンドポイント
-    const webhookEndpoint = 'https://your-webhook-endpoint.com';
+    const webhookEndpoint = WEBHOOK_ENDPOINT;
     
     // Webhook通知を受け取るためのリクエストを設定
     const requestOptions = {
@@ -135,7 +135,7 @@
     };
     
     // アクセストークンを使用してInstagram Graph APIにリクエストを送信
-    fetch('https://graph.instagram.com/me/subscribed_apps', requestOptions)
+    fetch('https://graph.facebook.com/me/subscribed_apps', requestOptions)
         .then(response => response.json())
         .then(data => {
             console.log('Subscription created:', data);
