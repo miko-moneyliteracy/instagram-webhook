@@ -1,5 +1,5 @@
 <?php
-  file_put_contents('verify.log, print_r( $_GET, true ), FILE_APPEND);
+
 ?>
 <html>
     <head>
