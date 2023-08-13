@@ -115,10 +115,10 @@
 
     <script>
     // アクセストークンをここに設定
-    const accessToken = WEBHOOK_TOKEN;
+    const accessToken = os.environ.get('WEBHOOK_TOKEN');
     
     // Webhook通知を受け取るエンドポイント
-    const webhookEndpoint = f({WEBHOOK_ENDPOINT}/instagram-webhook);
+    const webhookEndpoint = os.environ.get('WEBHOOK_ENDPOINT');
     
     // Webhook通知を受け取るためのリクエストを設定
     const requestOptions = {
