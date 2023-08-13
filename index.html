@@ -118,7 +118,7 @@
     const accessToken = WEBHOOK_TOKEN;
     
     // Webhook通知を受け取るエンドポイント
-    const webhookEndpoint = WEBHOOK_ENDPOINT;
+    const webhookEndpoint = f({WEBHOOK_ENDPOINT}/instagram-webhook);
     
     // Webhook通知を受け取るためのリクエストを設定
     const requestOptions = {
