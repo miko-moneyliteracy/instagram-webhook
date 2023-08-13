@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-    <title>Github Pages</title>
+    <title>Miko Official Site</title>
 </head>
 <body>
     <main class="container">
@@ -112,5 +112,37 @@
             border-radius: 20px;
         }
     </style>
+
+    <script>
+    // アクセストークンをここに設定
+    const accessToken = 'YOUR_ACCESS_TOKEN';
+    
+    // Webhook通知を受け取るエンドポイント
+    const webhookEndpoint = 'https://your-webhook-endpoint.com';
+    
+    // Webhook通知を受け取るためのリクエストを設定
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`
+        },
+        body: JSON.stringify({
+            object: 'user',
+            aspect: 'media',
+            callback_url: webhookEndpoint
+        })
+    };
+    
+    // アクセストークンを使用してInstagram Graph APIにリクエストを送信
+    fetch('https://graph.instagram.com/me/subscribed_apps', requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            console.log('Subscription created:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    </script>
 </body>
 </html>
