@@ -16,8 +16,9 @@
         
         // 認証チャレンジを表示
         if (challenge) {
-            const challengeElement = document.getElementById('challenge');
-            challengeElement.textContent = challenge;
+            const challengeElement = document.createElement('div');
+            challengeElement.textContent = `Challenge: ${challenge}`;
+            document.body.appendChild(challengeElement);
         }
     </script>
 </body>
