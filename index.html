@@ -114,35 +114,13 @@
     </style>
 
     <script>
-    // アクセストークンをここに設定
-    const accessToken = os.environ.get('WEBHOOK_TOKEN');
-    
-    // Webhook通知を受け取るエンドポイント
-    const webhookEndpoint = os.environ.get('WEBHOOK_ENDPOINT');
-    
-    // Webhook通知を受け取るためのリクエストを設定
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`
-        },
-        body: JSON.stringify({
-            object: 'user',
-            aspect: 'media',
-            callback_url: webhookEndpoint
-        })
-    };
-    
-    // アクセストークンを使用してInstagram Graph APIにリクエストを送信
-    fetch('https://graph.facebook.com/me/subscribed_apps', requestOptions)
-        .then(response => response.json())
-        .then(data => {
-            console.log('Subscription created:', data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+        // Instagramからの認証チャレンジを取得
+        const challenge = new URLSearchParams(window.location.search).get('hub.challenge');
+        
+        // 認証チャレンジをレスポンスとして返す
+        if (challenge) {
+          document.body.innerHTML = challenge;
+        }
     </script>
 </body>
 </html>
