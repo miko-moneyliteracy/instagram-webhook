@@ -114,14 +114,17 @@
     </style>
 
     <script>
-    // Instagramからの認証チャレンジを取得
+   // Instagramからの認証チャレンジを取得
     const challenge = new URLSearchParams(window.location.search).get('hub.challenge');
-    const verifyToken = new URLSearchParams(window.location.search).get('hub.verify_token');
     
-    // 設定したトークンと一致する場合に認証チャレンジを返す
-    if (verifyToken === '12346') {
-      document.body.innerHTML = challenge;
+    // 認証チャレンジを表示
+    if (challenge) {
+        const challengeElement = document.getElementById('challenge');
+        challengeElement.textContent = challenge;
     }
-    </script>
+</script>
+
+<!-- 認証チャレンジを表示する要素 -->
+<div>Challenge: <span id="challenge"></span></div>
 </body>
 </html>
